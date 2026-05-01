@@ -1,0 +1,32 @@
+{% load static %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hot Reload Test{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Tailwind CSS -->
+    {% tailwind_css %}
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <header class="bg-red-500 p-4 text-center text-xl font-bold">
+        🔥 Django + Tailwind Hot Reload Test
+    </header>
+
+    <main class="p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-green-500 fixed bottom-0 w-full bg-gray-800 p-3 text-center text-sm">
+        Footer — edit this to test reload
+    </footer>
+
+</body>
+</html>
