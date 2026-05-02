@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-chai-deep: #2C1A0E;
+  --color-chai-amber: #C8881A;
+  --color-chai-cream: #FDF6EC;
+  --color-chai-tan: #9A7B5C;
+  --color-chai-light-tan: #f5ede0;
+  --font-playfair: 'Playfair Display', serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+}
 
 /**
   * A catch-all path to Django template files, JavaScript, and Python files
@@ -7,4 +18,4 @@
   * If your final CSS file is not being updated after code changes, you may want to broaden or narrow
   * the scope of this path.
   */
-@source "../../../**/*.{html,py,js}";
+@source "../../../**/*.{html,py,js}";;

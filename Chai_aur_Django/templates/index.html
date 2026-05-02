@@ -1,21 +1,100 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Home
+Home - Chai House
 {% endblock %}
 
 {% block content %}
 
-<h1 class="text-3xl font-bold text-blue-400">
-    Tailwind Hot Reload Test 🚀
-</h1>
+<!-- Hero Section -->
+<section class="relative bg-chai-deep overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div class="text-center">
+            <p class="text-chai-amber text-sm font-medium tracking-[0.22em] uppercase mb-4">
+                Artisan Tea Collection
+            </p>
+            <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-chai-cream mb-6 leading-tight">
+                Discover Your Perfect <em class="italic font-normal text-chai-amber">Chai</em>
+            </h1>
+            <p class="text-chai-tan text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Explore our handcrafted blends, each steeped in tradition and crafted with the finest ingredients from around the world.
+            </p>
+            <a href="{% url 'all_chai' %}"
+               class="inline-flex items-center gap-2 bg-chai-amber hover:bg-chai-amber/90 text-chai-deep font-medium px-8 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-chai-amber/20">
+                Explore All Chai
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </div>
 
-<p class="mt-4 text-gray-300">
-    Edit this file and check if changes appear instantly.
-</p>
+    <!-- Decorative bottom border -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-chai-amber/30 to-transparent"></div>
+</section>
 
-<div class="mt-6 p-4 bg-blue-600 rounded-lg">
-    If this box color changes, Tailwind is working.
-</div>
+<!-- Features Section -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <!-- Feature 1 -->
+        <div class="text-center group">
+            <div class="w-16 h-16 bg-chai-light-tan rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-chai-amber/20 transition-colors duration-200">
+                <span class="text-3xl">🍃</span>
+            </div>
+            <h3 class="font-playfair text-xl font-bold text-chai-deep mb-2">
+                Handpicked Leaves
+            </h3>
+            <p class="text-chai-tan text-sm leading-relaxed">
+                Only the finest tea leaves, carefully selected from premium estates around the world.
+            </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="text-center group">
+            <div class="w-16 h-16 bg-chai-light-tan rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-chai-amber/20 transition-colors duration-200">
+                <span class="text-3xl">✨</span>
+            </div>
+            <h3 class="font-playfair text-xl font-bold text-chai-deep mb-2">
+                Traditional Blends
+            </h3>
+            <p class="text-chai-tan text-sm leading-relaxed">
+                Time-honored recipes passed down through generations, perfected in every cup.
+            </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="text-center group">
+            <div class="w-16 h-16 bg-chai-light-tan rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-chai-amber/20 transition-colors duration-200">
+                <span class="text-3xl">☕</span>
+            </div>
+            <h3 class="font-playfair text-xl font-bold text-chai-deep mb-2">
+                Perfect Brew
+            </h3>
+            <p class="text-chai-tan text-sm leading-relaxed">
+                Expert guidance to help you brew the perfect cup, every single time.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-chai-light-tan border-t border-b border-chai-tan/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <p class="text-chai-amber text-sm font-medium tracking-[0.22em] uppercase mb-3">
+            Start Your Journey
+        </p>
+        <h2 class="font-playfair text-3xl md:text-4xl font-bold text-chai-deep mb-4">
+            Ready to Explore?
+        </h2>
+        <p class="text-chai-tan mb-8 max-w-lg mx-auto">
+            Browse our complete collection of artisan chai varieties and find your new favorite blend.
+        </p>
+        <a href="{% url 'all_chai' %}"
+           class="inline-flex items-center gap-2 border-2 border-chai-deep text-chai-deep hover:bg-chai-deep hover:text-chai-cream font-medium px-8 py-3 rounded-full transition-all duration-200">
+            View All Chai Varieties
+            <span class="text-lg">→</span>
+        </a>
+    </div>
+</section>
 
 {% endblock %}

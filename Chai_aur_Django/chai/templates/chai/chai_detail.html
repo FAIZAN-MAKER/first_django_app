@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ chai.name }} - Chai House
+{% endblock %}
+
+{% block content %}
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <!-- Back Button -->
+    <a href="{% url 'all_chai' %}"
+       class="inline-flex items-center gap-2 text-chai-tan hover:text-chai-amber transition-colors duration-200 mb-8 group">
+        <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to All Chai
+    </a>
+
+    <!-- Hero Image -->
+    <div class="relative rounded-2xl overflow-hidden mb-8 md:mb-12 aspect-[21/9] bg-chai-light-tan">
+        <img src="{{ chai.image.url }}"
+             alt="{{ chai.name }}"
+             class="w-full h-full object-cover">
+        <!-- Type Badge -->
+        <span class="absolute top-4 left-4 bg-chai-deep text-chai-cream text-sm font-medium tracking-[0.14em] uppercase px-4 py-2 rounded-full">
+            {{ chai.get_type_display }}
+        </span>
+    </div>
+
+    <!-- Content Area -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+            <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-chai-deep mb-4">
+                {{ chai.name }}
+            </h1>
+            <p class="text-chai-tan text-lg leading-relaxed mb-8">
+                {{ chai.description }}
+            </p>
+
+            <!-- Full Description (if needed) -->
+            <div class="bg-chai-light-tan rounded-xl p-6 md:p-8">
+                <h2 class="font-playfair text-xl font-bold text-chai-deep mb-4">
+                    About This Blend
+                </h2>
+                <p class="text-chai-tan leading-relaxed">
+                    {{ chai.description }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Sidebar Metadata -->
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-xl border border-chai-tan/20 p-6 sticky top-24">
+                <h3 class="font-playfair text-lg font-bold text-chai-deep mb-6">
+                    Chai Details
+                </h3>
+
+                <dl class="space-y-4">
+                    <div>
+                        <dt class="text-xs text-chai-tan uppercase tracking-wider font-medium mb-1">
+                            Type
+                        </dt>
+                        <dd class="text-chai-deep font-medium">
+                            {{ chai.get_type_display }}
+                        </dd>
+                    </div>
+
+                    <div class="border-t border-chai-tan/10 pt-4">
+                        <dt class="text-xs text-chai-tan uppercase tracking-wider font-medium mb-1">
+                            Date Added
+                        </dt>
+                        <dd class="text-chai-deep font-medium">
+                            {{ chai.date_added|date:"F d, Y" }}
+                        </dd>
+                    </div>
+
+                    <div class="border-t border-chai-tan/10 pt-4">
+                        <dt class="text-xs text-chai-tan uppercase tracking-wider font-medium mb-1">
+                            Chai ID
+                        </dt>
+                        <dd class="text-chai-deep font-medium">
+                            #{{ chai.id }}
+                        </dd>
+                    </div>
+                </dl>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 space-y-3">
+                    <a href="{% url 'all_chai' %}"
+                       class="block w-full text-center bg-chai-deep hover:bg-chai-deep/90 text-chai-cream font-medium px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-chai-deep/20">
+                        View All Chai
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

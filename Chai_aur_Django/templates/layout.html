@@ -5,27 +5,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Hot Reload Test{% endblock %}</title>
-
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{% block title %}Chai Discovery{% endblock %}</title>
 
     <!-- Tailwind CSS -->
     {% tailwind_css %}
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-chai-cream text-chai-deep font-dm-sans antialiased">
 
-    <header class="bg-red-500 p-4 text-center text-xl font-bold">
-        🔥 Django + Tailwind Hot Reload Test
+    <!-- Sticky Header with warm cream background -->
+    <header class="sticky top-0 z-50 bg-chai-cream border-b border-chai-tan/20 shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo/Name -->
+                <a href="/" class="flex items-center gap-2 group">
+                    <span class="text-2xl">☕</span>
+                    <span class="font-playfair text-xl font-bold text-chai-deep group-hover:text-chai-amber transition-colors duration-200">
+                        Chai House
+                    </span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-8">
+                    <a href="/" class="text-sm font-medium text-chai-deep hover:text-chai-amber transition-colors duration-200">
+                        Home
+                    </a>
+                    <a href="{% url 'all_chai' %}" class="text-sm font-medium text-chai-deep hover:text-chai-amber transition-colors duration-200">
+                        All Chai
+                    </a>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main class="p-6">
+    <!-- Main Content -->
+    <main class="min-h-screen">
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer class="bg-green-500 fixed bottom-0 w-full bg-gray-800 p-3 text-center text-sm">
-        Footer — edit this to test reload
+    <!-- Footer with brand tagline -->
+    <footer class="bg-chai-deep text-chai-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">☕</span>
+                    <span class="font-playfair text-xl font-bold text-chai-cream">
+                        Chai House
+                    </span>
+                </div>
+                <p class="text-sm text-chai-tan text-center max-w-md">
+                    Discover the finest artisan tea blends, handcrafted with tradition and steeped in excellence.
+                </p>
+                <div class="border-t border-chai-tan/20 w-24 pt-4 mt-4">
+                    <p class="text-xs text-chai-tan/60">
+                        &copy; 2026 Chai House. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
