@@ -9,64 +9,87 @@
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
     <!-- Back Button -->
     <a href="{% url 'all_chai' %}"
-       class="inline-flex items-center gap-2 text-chai-tan hover:text-chai-amber transition-colors duration-200 mb-8 group">
+       class="inline-flex items-center gap-2 text-chai-tan hover:text-chai-amber transition-colors duration-200 mb-6 group">
         <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
         Back to All Chai
     </a>
 
-    <!-- Hero Image -->
-    <div class="relative rounded-2xl overflow-hidden mb-8 md:mb-12 aspect-[21/9] bg-chai-light-tan">
+    <!-- Hero Section with Image -->
+    <div class="relative rounded-2xl overflow-hidden mb-8 md:mb-12 max-h-[480px] bg-chai-light-tan">
+        <!-- Chai Image -->
         <img src="{{ chai.image.url }}"
              alt="{{ chai.name }}"
-             class="w-full h-full object-cover">
-        <!-- Type Badge -->
-        <span class="absolute top-4 left-4 bg-chai-deep text-chai-cream text-sm font-medium tracking-[0.14em] uppercase px-4 py-2 rounded-full">
+             class="w-full h-full object-cover min-h-[300px] max-h-[480px]">
+
+        <!-- Gradient Overlay at Bottom -->
+        <div class="absolute inset-0 bg-gradient-to-t from-chai-deep/90 via-chai-deep/30 to-transparent"></div>
+
+        <!-- Type Badge (Top-Left) -->
+        <span class="absolute top-4 left-4 bg-chai-deep/90 backdrop-blur-sm text-chai-cream text-sm font-medium tracking-[0.14em] uppercase px-4 py-2 rounded-full border border-chai-amber/30">
             {{ chai.get_type_display }}
         </span>
-    </div>
 
-    <!-- Content Area -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-        <!-- Main Content -->
-        <div class="lg:col-span-2">
-            <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-chai-deep mb-4">
+        <!-- Chai Name Overlaid on Bottom -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-chai-cream leading-tight">
                 {{ chai.name }}
             </h1>
-            <p class="text-chai-tan text-lg leading-relaxed mb-8">
-                {{ chai.description }}
-            </p>
+        </div>
+    </div>
 
-            <!-- Full Description (if needed) -->
-            <div class="bg-chai-light-tan rounded-xl p-6 md:p-8">
-                <h2 class="font-playfair text-xl font-bold text-chai-deep mb-4">
-                    About This Blend
+    <!-- Two-Column Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <!-- LEFT Column (~65% = 8/12 cols) -->
+        <div class="lg:col-span-8">
+            <div class="bg-white rounded-2xl border border-chai-tan/20 p-6 md:p-8">
+                <h2 class="font-playfair text-2xl md:text-3xl font-bold text-chai-deep mb-6">
+                    About This Chai
                 </h2>
-                <p class="text-chai-tan leading-relaxed">
+
+                {% if chai.description %}
+                <p class="text-chai-tan text-lg leading-relaxed">
                     {{ chai.description }}
                 </p>
+                {% else %}
+                <!-- Styled Placeholder Message -->
+                <div class="text-center py-12 px-6">
+                    <div class="text-5xl mb-4 opacity-30">📝</div>
+                    <h3 class="font-playfair text-xl font-bold text-chai-deep mb-2">
+                        No Description Yet
+                    </h3>
+                    <p class="text-chai-tan leading-relaxed max-w-md mx-auto">
+                        The description for this chai variety hasn't been added yet. Check back soon for more details about this blend.
+                    </p>
+                </div>
+                {% endif %}
             </div>
         </div>
 
-        <!-- Sidebar Metadata -->
-        <div class="lg:col-span-1">
-            <div class="bg-white rounded-xl border border-chai-tan/20 p-6 sticky top-24">
-                <h3 class="font-playfair text-lg font-bold text-chai-deep mb-6">
+        <!-- RIGHT Column (~35% = 4/12 cols) -->
+        <div class="lg:col-span-4">
+            <div class="bg-white rounded-2xl border border-chai-tan/20 p-6 sticky top-24">
+                <h3 class="font-playfair text-xl font-bold text-chai-deep mb-6">
                     Chai Details
                 </h3>
 
-                <dl class="space-y-4">
+                <dl class="space-y-5">
+                    <!-- Type -->
                     <div>
                         <dt class="text-xs text-chai-tan uppercase tracking-wider font-medium mb-1">
                             Type
                         </dt>
-                        <dd class="text-chai-deep font-medium">
+                        <dd class="text-chai-deep font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 bg-chai-amber rounded-full"></span>
                             {{ chai.get_type_display }}
                         </dd>
                     </div>
 
-                    <div class="border-t border-chai-tan/10 pt-4">
+                    <div class="border-t border-chai-tan/10"></div>
+
+                    <!-- Date Added -->
+                    <div>
                         <dt class="text-xs text-chai-tan uppercase tracking-wider font-medium mb-1">
                             Date Added
                         </dt>
@@ -75,7 +98,10 @@
                         </dd>
                     </div>
 
-                    <div class="border-t border-chai-tan/10 pt-4">
+                    <div class="border-t border-chai-tan/10"></div>
+
+                    <!-- Chai ID -->
+                    <div>
                         <dt class="text-xs text-chai-tan uppercase tracking-wider font-medium mb-1">
                             Chai ID
                         </dt>
@@ -85,11 +111,14 @@
                     </div>
                 </dl>
 
-                <!-- Action Buttons -->
-                <div class="mt-8 space-y-3">
+                <!-- Back Button -->
+                <div class="mt-8">
                     <a href="{% url 'all_chai' %}"
-                       class="block w-full text-center bg-chai-deep hover:bg-chai-deep/90 text-chai-cream font-medium px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-chai-deep/20">
-                        View All Chai
+                       class="flex items-center justify-center gap-2 w-full bg-chai-deep hover:bg-chai-deep/90 text-chai-cream font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-chai-deep/20 group">
+                        <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Back to All Chai
                     </a>
                 </div>
             </div>

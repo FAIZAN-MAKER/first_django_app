@@ -31,7 +31,7 @@ All Chai - Chai House
     {% if Chais %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {% for chai in Chais %}
-        <a href="#" class="group">
+        <a href="{% url 'chai_detail' chai.id %}" class="group">
             <div class="bg-white rounded-2xl overflow-hidden border border-chai-tan/20 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-chai-deep/10">
                 <!-- Image Container (55% of card height) -->
                 <div class="relative aspect-[4/3] bg-chai-light-tan overflow-hidden">
